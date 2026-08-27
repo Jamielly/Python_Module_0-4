@@ -29,8 +29,8 @@ class Plant:
 
     def __init__(self, name: str, height: float, age: int) -> None:
         self._name = name
-        self._height = height
-        self._age = age
+        self._height = 0.0
+        self._age = 0
         self.set_height(height)
         self.set_age(age)
         self._stats = self.Statistics()
@@ -62,11 +62,11 @@ class Plant:
         return cls("Unknown plant", 0.0, 0)
 
     def grow(self) -> None:
-        self._height += 8.0
+        self.set_height(self._height + 8.0)
         self._stats.increment_grow()
 
     def age(self) -> None:
-        self._age += 20
+        self.set_age(self._age + 20)
         self._stats.increment_age()
 
     def show(self) -> None:
@@ -218,4 +218,3 @@ if __name__ == "__main__":
     anon = Plant.create_anonymous()
     anon.show()
     display_plant_stats(anon)
-
