@@ -23,11 +23,35 @@ class Plant:
                 end="",
             )
 
+    _name: str
+    _height: float
+    _age: int
+
     def __init__(self, name: str, height: float, age: int) -> None:
         self._name = name
         self._height = height
         self._age = age
+        self.set_height(height)
+        self.set_age(age)
         self._stats = self.Statistics()
+
+    def set_height(self, height: float) -> None:
+        if height < 0:
+            print(f"{self._name}: Error, height can't be negative")
+        else:
+            self._height = height
+
+    def set_age(self, age: int) -> None:
+        if age < 0:
+            print(f"{self._name}: Error, age can't be negative")
+        else:
+            self._age = age
+
+    def get_height(self) -> float:
+        return self._height
+
+    def get_age(self) -> int:
+        return self._age
 
     @staticmethod
     def is_older_than_year(age: int) -> bool:
@@ -52,6 +76,9 @@ class Plant:
 
 
 class Flower(Plant):
+    _color: str
+    _is_blooming: bool
+
     def __init__(
         self,
         name: str,
@@ -77,6 +104,9 @@ class Flower(Plant):
 
 
 class Seed(Flower):
+
+    _seeds: int
+
     def __init__(
         self,
         name: str,
@@ -108,6 +138,9 @@ class Tree(Plant):
         def display(self, name: str) -> None:
             super().display(name)
             print(f" {self._shade_calls} shade")
+
+    _trunk_diameter: float
+    _stats: TreeStatistics
 
     def __init__(
         self,
@@ -185,3 +218,4 @@ if __name__ == "__main__":
     anon = Plant.create_anonymous()
     anon.show()
     display_plant_stats(anon)
+
