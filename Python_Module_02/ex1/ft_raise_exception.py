@@ -25,3 +25,4 @@ def test_temperature() -> None:
 
 if __name__ == "__main__":
     test_temperature()
+
