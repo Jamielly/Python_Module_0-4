@@ -13,7 +13,6 @@ def garden_operations(operation_number: int) -> None:
 
 
 def test_error_types() -> None:
-    """Executa as operações capturando cada tipo de erro individualmente e em grupo."""
     print("=== Garden Error Types Demo ===")
 
     for op in range(4):
