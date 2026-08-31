@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+import sys
+
+
+def process_scores(args: list[str]) -> list[int]:
+    valid_scores: list[int] = []
+    for arg in args:
+        try:
+            valid_scores.append(int(arg))
+        except ValueError:
+            print(f"Invalid parameter: '{arg}'")
+    return valid_scores
+
+
+def display_analytics(scores: list[int]) -> None:
+    total_players: int = len(scores)
+    total_score: int = sum(scores)
+    average_score: float = total_score / total_players
+    high_score: int = max(scores)
+    low_score: int = min(scores)
+    score_range: int = high_score - low_score
+
+    print(f"Scores processed: {scores}")
+    print(f"Total players: {total_players}")
+    print(f"Total score: {total_score}")
+    print(f"Average score: {average_score}")
+    print(f"High score: {low_score}")
+    print(f"Low score: {low_score}")
+    print(f"Score range: {score_range}")
+
+
+def main() -> None:
+    print("=== Player Score Analytics ===")
+    raw_args: list[str] = sys.argv[1:]
+
+    if not raw_args:
+        print("No scores provided.")
+        print(f"Usage: python3 {sys.argv} <score1> <score2> ...")
+        return
+
+    scores: list[int] = process_scores(raw_args)
+
+    if not scores:
+        print("No scores provided.")
+        print(f"Usage: python3 {sys.argv} <score1> <score2> ...")
+        return
+
+    display_analytics(scores)
+
+
+if __name__ == "__main__":
+    main()
