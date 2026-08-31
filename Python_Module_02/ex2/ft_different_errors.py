@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 def garden_operations(operation_number: int) -> None:
-    Args:
-        operation_number (int): 
     if operation_number == 0:
         int("abc")
     elif operation_number == 1:
@@ -10,6 +8,8 @@ def garden_operations(operation_number: int) -> None:
         open("/non/existent/file")
     elif operation_number == 3:
         "string" + 42  # type: ignore
+    else:
+        return
 
 
 def test_error_types() -> None:
