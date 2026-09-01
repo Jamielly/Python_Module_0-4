@@ -4,34 +4,32 @@
 
 ![Language](https://img.shields.io/badge/language-Python-blue.svg)
 ![42](https://img.shields.io/badge/42-Python-black.svg)
-![Status](https://img.shields.io/badge/status-Completed-success.svg)
+![Status](https://img.shields.io/badge/status-In%20Progress-yellow.svg)
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776AB.svg)
 ![Flake8](https://img.shields.io/badge/flake8-passing-brightgreen.svg)
 ![Mypy](https://img.shields.io/badge/mypy-checked-blue.svg)
 
 ## Description
 
-Python_Module_0-4 covers the Python track of the 42 curriculum, from Module 00 to Module 04. The goal is to build a solid foundation in Python — from core syntax to data engineering and resilient systems — while gaining a deeper understanding of object-oriented design, error handling, data structures, and file persistence.
+`Python_Module_0-4` is my personal walkthrough of the Python track of the 42 curriculum, from Module 00 to Module 04. Each module is framed as a chapter in the life of a **digital garden**: a small simulated ecosystem of plants, sensors, and archives that grows more sophisticated — and more resilient — with every exercise.
 
-The project is structured as the cultivation of a digital garden, where each module adds a new layer of complexity and robustness to the system.
+Module 00 plants the first seeds with pure functions and basic control flow. Module 01 turns that logic into a proper object model with classes, inheritance, and encapsulation. Module 02 hardens the garden against failure with exceptions and custom error hierarchies. Module 03 puts collections, comprehensions, and command-line input to work in a small scoring/inventory game. Module 04 will close the loop with file persistence and streams.
 
-Through this project, I learned how Python handles typing and object models internally, how to design resilient programs around exceptions, and how to build modular, reusable, and well-tested code while respecting PEP8 and static typing standards.
+Every exercise is written with explicit type hints where the exercise calls for them, validated with `flake8` for style and `mypy` for typing, and organized so each script can be read, run, and reasoned about on its own.
 
 ---
 
-## Project Overview
+## Progress
 
-The project is organized into 5 modules, each with its own theme and focus:
+| Module | Theme                     | Focus                                                        | Status         | Exercises |
+|:------:|---------------------------|---------------------------------------------------------------|----------------|:---------:|
+| **00** | Seeds of Code             | Syntax, functions, conditionals, iteration vs. recursion       | ✅ Complete     | 8 / 8     |
+| **01** | The Object-Oriented Garden| Classes, encapsulation, inheritance, nested & static members  | ✅ Complete     | 7 / 7     |
+| **02** | Garden Under Pressure     | Exceptions, custom error hierarchies, `finally`                | ✅ Complete     | 5 / 5     |
+| **03** | Data Structures in Play   | Collections, `sys.argv`, comprehensions, generators            | 🚧 In progress | 2 / 7     |
+| **04** | Cyber Archives            | File persistence, streams, context managers                    | ⏳ Not started  | 0 / —     |
 
-| Module | Theme | Main Focus |
-|:------:|-------|-------------|
-| **00** | Seeds of Code | Syntax, pure functions, recursion vs. iteration, type hints |
-| **01** | The Object-Oriented Garden | Classes, inheritance, encapsulation, special methods |
-| **02** | Agricultural Data Engineering | Exceptions, validation, resilience |
-| **03** | Data Structures in Play | Collections, comprehensions, generators |
-| **04** | Cyber Archives | File persistence, streams, context managers |
-
-All exercises were implemented following PEP8 conventions and validated with:
+Validation for every finished exercise:
 
 ```bash
 flake8 .
@@ -40,57 +38,66 @@ mypy .
 
 ---
 
-## Features
-
-* Pure functions with full type hint coverage
-* Custom class hierarchies with inheritance and encapsulation
-* Custom exception classes for domain-specific error handling
-* Data processing with comprehensions and generators
-* File I/O with mandatory context managers
-* PEP8-compliant, statically typed source code
-
----
-
 ## Module Breakdown
 
-### Module 00 — Fundamentals and Sequential Logic
+### Module 00 — Seeds of Code
 
-The initial phase where we "plant the first seeds" of code.
+The starting point: plain functions, `input()`/`print()`, conditionals, and the first comparison between recursion and iteration.
 
-* Basic syntax and variable manipulation
-* Pure functions for area calculations and harvest control
-* Recursion vs. iteration
-* First contact with Type Hints and static checking (`mypy`)
+| Exercise | File | What it does |
+|:--------:|------|---------------|
+| ex0 | `ft_hello_garden.py` | Prints a first greeting to the garden community |
+| ex1 | `ft_garden_name.py` | Reads a garden name from `input()` and echoes its status |
+| ex2 | `ft_plot_area.py` | Computes a rectangular plot's area from length and width |
+| ex3 | `ft_harvest_total.py` | Sums three days of harvest input into a total |
+| ex4 | `ft_plant_age.py` | Branches on a plant's age to decide if it's ready to harvest |
+| ex5 | `ft_water_reminder.py` | Branches on days-since-watering to trigger a reminder |
+| ex6 | `ft_count_harvest_iterative.py` / `ft_count_harvest_recursive.py` | Counts down to harvest day with both a `for` loop and a recursive function, side by side |
+| ex7 | `ft_seed_inventory.py` | First fully type-hinted function (`str`, `int`, `-> None`); reports seed inventory in packets, grams, or area depending on the unit passed in |
 
-### Module 01 — Object-Oriented Programming (OOP)
+### Module 01 — The Object-Oriented Garden
 
-Evolving from functional code to a system organized around objects.
+Functional code evolves into a real object model, exercise by exercise: a plain `Plant` class first, then encapsulated state, then a small inheritance tree.
 
-* Classes (`Plant`) and object instantiation
-* Instance methods, protected attributes, and encapsulation
-* Inheritance hierarchies (Flowers, Trees, Vegetables) and `super()`
-* Class methods, static methods, and nested classes
+| Exercise | File | What it does |
+|:--------:|------|---------------|
+| ex0 | `ft_garden_intro.py` | Introduces the `-> None` return-type convention and an `if __name__ == "__main__":` entry point |
+| ex1 | `ft_garden_data.py` | First `Plant` class: constructor, public attributes, a `show()` method, and a small plant registry |
+| ex2 | `ft_plant_growth.py` | Adds `grow()` and `age_up()` methods that mutate state over a simulated week |
+| ex3 | `ft_plant_factory.py` | Builds a list of `Plant` instances and iterates over them uniformly |
+| ex4 | `ft_garden_security.py` | Introduces protected attributes (`_height`, `_age`) with setters that reject invalid (negative) values |
+| ex5 | `ft_plant_types.py` | Adds class-level type annotations for protected attributes and getter/setter pairs |
+| ex6 | `ft_garden_analytics.py` | The full hierarchy: a nested `Statistics` class, `@staticmethod` / `@classmethod` helpers, and `Flower`, `Seed(Flower)`, and `Tree` subclasses — each overriding `show()` and calling `super()` |
 
-### Module 02 — Error Handling and Resilience
+### Module 02 — Garden Under Pressure
 
-Turning the program into an agricultural data engineering tool capable of handling failures.
+The garden learns to fail gracefully: catching built-in exceptions, raising domain-specific ones, and guaranteeing cleanup.
 
-* Exception management with `try` / `except` / `finally`
-* Custom exceptions for domain-specific cases (e.g., `WaterError`)
-* Data integrity through sensor validation
+| Exercise | File | What it does |
+|:--------:|------|---------------|
+| ex0 | `ft_first_exception.py` | First `try` / `except ValueError` around an `int()` conversion that may fail |
+| ex1 | `ft_raise_exception.py` | Actively `raise`s `ValueError` when a temperature reading falls outside a valid range |
+| ex2 | `ft_different_errors.py` | Catches several distinct built-ins (`ValueError`, `ZeroDivisionError`, `FileNotFoundError`, `TypeError`) both individually and in one combined `except (...)` block |
+| ex3 | `ft_custom_errors.py` | Introduces a custom exception hierarchy: `GardenError` as the base class, with `PlantError` and `WaterError` as subclasses |
+| ex4 | `ft_finally_block.py` | Uses `finally` to guarantee the watering system is always "closed", even when a `PlantError` interrupts the loop |
 
-### Module 03 — Collections and Performance
+### Module 03 — Data Structures in Play *(in progress)*
 
-An adventure through data structures applied to a game context.
+Collections, comprehensions, and command-line input, applied to a small scoring/inventory game.
 
-* Advanced manipulation of `List`, `Tuple`, `Set`, and `Dict`
-* Comprehensions for elegant, performant data processing
-* Generators and the `yield` keyword
-* Command-line arguments (`sys.argv`)
+| Exercise | File | Status | What it does |
+|:--------:|------|:------:|---------------|
+| ex0 | `ft_command_quest.py` | ✅ Done | Reads `sys.argv`, reports the program name, argument count, and each argument in turn |
+| ex1 | `ft_score_analytics.py` | ✅ Done | Parses player scores from CLI arguments, skips invalid entries, and reports totals, average, high/low, and range |
+| ex2 | `ft_coordinate_system.py` | 🚧 Planned | Tuple-based coordinate handling |
+| ex3 | `ft_achievement_tracker.py` | 🚧 Planned | Set operations for tracking unlocked achievements |
+| ex4 | `ft_inventory_system.py` | 🚧 Planned | Dictionary-based inventory management |
+| ex5 | `ft_data_stream.py` | 🚧 Planned | Generators and `yield` for lazy data streaming |
+| ex6 | `ft_data_alchemist.py` | 🚧 Planned | Comprehensions for transforming collections |
 
-### Module 04 — Data Persistence and Streams
+### Module 04 — Cyber Archives *(not started)*
 
-Preserving digital knowledge through file manipulation in the Cyber Archives.
+The next chapter: persisting the garden's data to disk.
 
 * File read/write operations (`open`, `read`, `write`)
 * Standard output (`stdout`) and error (`stderr`) streams
@@ -102,14 +109,39 @@ Preserving digital knowledge through file manipulation in the Cyber Archives.
 
 ```
 .
-├── module00/
-│   ├── ex00/
-│   ├── ex01/
-│   └── main.py
-├── module01/
-├── module02/
-├── module03/
-├── module04/
+├── Python_Module_00/
+│   ├── ex0/ft_hello_garden.py
+│   ├── ex1/ft_garden_name.py
+│   ├── ex2/ft_plot_area.py
+│   ├── ex3/ft_harvest_total.py
+│   ├── ex4/ft_plant_age.py
+│   ├── ex5/ft_water_reminder.py
+│   ├── ex6/ft_count_harvest_iterative.py
+│   ├── ex6/ft_count_harvest_recursive.py
+│   └── ex7/ft_seed_inventory.py
+├── Python_Module_01/
+│   ├── ex0/ft_garden_intro.py
+│   ├── ex1/ft_garden_data.py
+│   ├── ex2/ft_plant_growth.py
+│   ├── ex3/ft_plant_factory.py
+│   ├── ex4/ft_garden_security.py
+│   ├── ex5/ft_plant_types.py
+│   └── ex6/ft_garden_analytics.py
+├── Python_Module_02/
+│   ├── ex0/ft_first_exception.py
+│   ├── ex1/ft_raise_exception.py
+│   ├── ex2/ft_different_errors.py
+│   ├── ex3/ft_custom_errors.py
+│   └── ex4/ft_finally_block.py
+├── Python_Module_03/
+│   ├── ex0/ft_command_quest.py
+│   ├── ex1/ft_score_analytics.py
+│   ├── ex2/ft_coordinate_system.py     # planned
+│   ├── ex3/ft_achievement_tracker.py   # planned
+│   ├── ex4/ft_inventory_system.py      # planned
+│   ├── ex5/ft_data_stream.py           # planned
+│   └── ex6/ft_data_alchemist.py        # planned
+├── Glossary python 42.pdf
 └── README.md
 ```
 
@@ -126,19 +158,23 @@ Preserving digital knowledge through file manipulation in the Cyber Archives.
 
 ### Run
 
-Each exercise must be run from its respective directory.
-
-Module 00 uses the provided test helper:
+Module 00 exercises are plain functions with no `__main__` guard — they're meant to be imported and called directly:
 
 ```bash
-python3 main.py
+python3 -c "from ft_hello_garden import ft_hello_garden; ft_hello_garden()"
 ```
 
-Other modules are run directly, with the shebang `#!/usr/bin/env python3` set:
+From Module 01 onward, every script carries a shebang and an `if __name__ == "__main__":` block, so it can be run on its own:
 
 ```bash
-chmod +x script_name.py
-./script_name.py
+chmod +x ft_garden_analytics.py
+./ft_garden_analytics.py
+```
+
+or simply:
+
+```bash
+python3 ft_garden_analytics.py
 ```
 
 ### Validate
@@ -154,49 +190,57 @@ Both commands must return with no errors for an exercise to be considered compli
 
 ## Usage
 
-Example of the class hierarchy introduced in Module 01:
+Inheritance hierarchy from Module 01 (`ft_garden_analytics.py`):
 
 ```python
 #!/usr/bin/env python3
-from plant import Plant, Flower
-
-garden = Flower(name="Rose", height=0.3)
-garden.grow()
-print(garden)
+rose = Flower("Rose", 15.0, 10, "red")
+rose.grow()
+rose.bloom()
+rose.show()
+# Rose: 23.0cm, 10 days old
+# Color: red
+# Rose is blooming beautifully!
 ```
 
-Example of custom exception handling introduced in Module 02:
+Custom exception hierarchy from Module 02 (`ft_custom_errors.py`):
 
 ```python
 #!/usr/bin/env python3
-from errors import WaterError
-
 try:
-    check_moisture_level(sensor_value)
-except WaterError as e:
-    print(f"Irrigation failure: {e}")
+    check_water(tank_empty=True)
+except WaterError as error:
+    print(f"Caught WaterError: {error}")
+```
+
+Command-line score analytics from Module 03 (`ft_score_analytics.py`):
+
+```bash
+python3 ft_score_analytics.py 88 92 abc 74 100
+# Invalid parameter: 'abc'
+# Scores processed: [88, 92, 74, 100]
+# Total players: 4
+# ...
 ```
 
 ---
 
 ## Technical Choices
 
-Some implementation decisions made during the project:
-
-* Type hints on every function signature, checked with `mypy --strict` where applicable
-* Custom exception hierarchy instead of relying on generic `Exception`
-* Generators preferred over lists for large or lazy data flows
-* Context managers used for every file operation, with no manual `close()` calls
-* Consistent PEP8 formatting enforced with `flake8`
+* Type hints on every function and method signature from Module 00's last exercise onward, checked with `mypy`
+* Protected attributes (`_name`, `_height`, …) with validating setters instead of raw public state
+* A dedicated exception hierarchy (`GardenError → PlantError`, `WaterError`) instead of relying on generic `Exception`
+* `super()` used consistently across the `Plant → Flower → Seed` and `Plant → Tree` hierarchies
+* Consistent PEP 8 formatting enforced with `flake8`
 
 ---
 
 ## Testing
 
-The project was validated using:
+Each exercise is validated by:
 
-* Custom test cases per exercise
-* Edge case testing (invalid input, empty collections, malformed files)
+* Manual execution against the expected 42 subject output
+* Edge-case checks (invalid input, out-of-range values, missing arguments)
 * `flake8` for style compliance
 * `mypy` for type correctness
 
@@ -206,10 +250,10 @@ The project was validated using:
 
 ### Documentation
 
-* Python Official Documentation — https://docs.python.org/3/
+* [Python Official Documentation](https://docs.python.org/3/)
 * PEP 8 — Style Guide for Python Code
 * PEP 484 — Type Hints
-* 42 Subject PDF
+* `Glossary python 42.pdf` — the 42-provided glossary included in this repository
 
 ### References
 
@@ -234,17 +278,16 @@ All implementations, testing, debugging, and final validation were completed man
 
 This project strengthened my understanding of:
 
-* Type hints and static type checking
-* Object-oriented design in Python (inheritance, encapsulation, `super()`)
-* Custom exception hierarchies and defensive programming
-* Comprehensions and generators for efficient data processing
-* Context managers and safe resource handling
+* Writing pure functions and reasoning about recursion vs. iteration
+* Object-oriented design in Python — encapsulation, inheritance, `super()`, nested classes
+* Custom exception hierarchies and defensive programming with `try` / `except` / `finally`
+* Parsing and validating command-line input with `sys.argv`
+* Type hints and static type checking with `mypy`
 * Writing PEP8-compliant, maintainable Python code
 
 ---
 
 ## Author
 
-Jamielly R.
-
+**Jamielly R.**
 GitHub: https://github.com/Jamielly
