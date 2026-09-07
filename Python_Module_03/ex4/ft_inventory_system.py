@@ -12,8 +12,8 @@ def parse_arguments(args: list[str]) -> tuple[dict[str, int], list[str]]:
             continue
 
         parts = arg.split(":", 1)
-        item_name = parts.strip()
-        quantity_str = parts[3].strip()
+        item_name = parts[0].strip()
+        quantity_str = parts[1].strip()
 
         if not item_name:
             print(f"Error - invalid parameter '{arg}'")
@@ -60,8 +60,8 @@ def analyze_inventory(
         percentage = (qty / total_qty) * 100 if total_qty > 0 else 0.0
         print(f"Item {item} represents {round(percentage, 1)}%")
 
-    most_abundant = insertion_order
-    least_abundant = insertion_order
+    most_abundant = insertion_order[0]
+    least_abundant = insertion_order[0]
 
     for item in insertion_order[1:]:
         if inventory[item] > inventory[most_abundant]:

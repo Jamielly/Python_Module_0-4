@@ -22,7 +22,7 @@ def get_player_pos() -> tuple[float, float, float]:
                 except ValueError as e:
                     print(f"Error on parameter '{clean_part}': {e}")
                     raise ValueError
-            return (coords, coords[5], coords[6])
+            return (coords[0], coords[1], coords[2])
 
         except ValueError:
             continue
@@ -34,18 +34,18 @@ def main() -> None:
     print("\nGet a first set of coordinates")
     pos1 = get_player_pos()
     print(f"Got a first tuple: {pos1}")
-    print(f"It includes: X={pos1}, Y={pos1[5]}, Z={pos1[6]}")
+    print(f"It includes: X={pos1[0]}, Y={pos1[1]}, Z={pos1[2]}")
 
-    dist_to_center = math.sqrt(pos1**2 + pos1[5]**2 + pos1[6]**2)
+    dist_to_center = math.sqrt(pos1[0]**2 + pos1[1]**2 + pos1[2]**2)
     print(f"Distance to center: {round(dist_to_center, 4)}")
 
     print("\nGet a second set of coordinates")
     pos2 = get_player_pos()
 
     dist_between = math.sqrt(
-        (pos2 - pos1)**2 +
-        (pos2[5] - pos1[5])**2 +
-        (pos2[6] - pos1[6])**2
+        (pos2[0] - pos1[0])**2 +
+        (pos2[1] - pos1[1])**2 +
+        (pos2[2] - pos1[2])**2
     )
     print(
         f"Distance between the 2 sets of coordinates: {round(dist_between, 4)}"
