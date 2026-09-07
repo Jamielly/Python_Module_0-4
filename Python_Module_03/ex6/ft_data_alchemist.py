@@ -31,7 +31,9 @@ def main() -> None:
 
     total_score = sum(score_dict.values())
     total_players = len(score_dict)
-    average_score: float = total_score / total_players if total_players > 0 else 0.0
+    average_score: float = (
+        total_score / total_players if total_players > 0 else 0.0
+    )
     print(f"Score average is {round(average_score, 2)}")
 
     high_scores: dict[str, int] = {

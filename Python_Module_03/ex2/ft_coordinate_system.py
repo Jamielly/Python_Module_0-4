@@ -5,7 +5,9 @@ import math
 def get_player_pos() -> tuple[float, float, float]:
     while True:
         try:
-            entry = input("Enter new coordinates as floats in format 'x,y,z': ")
+            entry = input(
+                "Enter new coordinates as floats in format 'x,y,z': "
+                )
 
             parts = entry.split(",")
             if len(parts) != 3:
@@ -37,7 +39,6 @@ def main() -> None:
     dist_to_center = math.sqrt(pos1**2 + pos1[5]**2 + pos1[6]**2)
     print(f"Distance to center: {round(dist_to_center, 4)}")
 
-    # 3. Obter o segundo ponto
     print("\nGet a second set of coordinates")
     pos2 = get_player_pos()
 
@@ -46,7 +47,9 @@ def main() -> None:
         (pos2[5] - pos1[5])**2 +
         (pos2[6] - pos1[6])**2
     )
-    print(f"Distance between the 2 sets of coordinates: {round(dist_between, 4)}")
+    print(
+        f"Distance between the 2 sets of coordinates: {round(dist_between, 4)}"
+        )
 
 
 if __name__ == "__main__":
