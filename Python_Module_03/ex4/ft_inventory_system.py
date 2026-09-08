@@ -12,8 +12,8 @@ def parse_arguments(args: list[str]) -> tuple[dict[str, int], list[str]]:
             continue
 
         parts = arg.split(":", 1)
-        item_name = parts.strip()
-        quantity_str = parts[3].strip()
+        item_name = parts[0].strip()
+        quantity_str = parts[1].strip()
 
         if not item_name:
             print(f"Error - invalid parameter '{arg}'")
@@ -26,7 +26,10 @@ def parse_arguments(args: list[str]) -> tuple[dict[str, int], list[str]]:
         try:
             quantity = int(quantity_str)
             if quantity < 0:
-                print(f"Quantity error for '{item_name}': negative quantity not allowed")
+                print(
+                    f"Quantity error for '{item_name}': "
+                    "negative quantity not allowed"
+                  )
                 continue
             inventory.update({item_name: quantity})
             insertion_order.append(item_name)
@@ -36,7 +39,10 @@ def parse_arguments(args: list[str]) -> tuple[dict[str, int], list[str]]:
     return inventory, insertion_order
 
 
-def analyze_inventory(inventory: dict[str, int], insertion_order: list[str]) -> None:
+def analyze_inventory(
+        inventory: dict[str, int],
+        insertion_order: list[str]
+        ) -> None:
     if not inventory:
         print("Inventory is empty.")
         return
@@ -54,8 +60,8 @@ def analyze_inventory(inventory: dict[str, int], insertion_order: list[str]) -> 
         percentage = (qty / total_qty) * 100 if total_qty > 0 else 0.0
         print(f"Item {item} represents {round(percentage, 1)}%")
 
-    most_abundant = insertion_order
-    least_abundant = insertion_order
+    most_abundant = insertion_order[0]
+    least_abundant = insertion_order[0]
 
     for item in insertion_order[1:]:
         if inventory[item] > inventory[most_abundant]:
@@ -63,8 +69,14 @@ def analyze_inventory(inventory: dict[str, int], insertion_order: list[str]) -> 
         if inventory[item] < inventory[least_abundant]:
             least_abundant = item
 
-    print(f"Item most abundant: {most_abundant} with quantity {inventory[most_abundant]}")
-    print(f"Item least abundant: {least_abundant} with quantity {inventory[least_abundant]}")
+    print(
+        f"Item most abundant: {most_abundant}"
+        f" with quantity {inventory[most_abundant]}"
+        )
+    print(
+        f"Item least abundant: {least_abundant} "
+        f"with quantity {inventory[least_abundant]}"
+        )
 
     inventory.update({"magic_item": 1})
     print(f"Updated inventory: {inventory}")

@@ -24,7 +24,7 @@ def display_analytics(scores: list[int]) -> None:
     print(f"Total players: {total_players}")
     print(f"Total score: {total_score}")
     print(f"Average score: {average_score}")
-    print(f"High score: {low_score}")
+    print(f"High score: {high_score}")
     print(f"Low score: {low_score}")
     print(f"Score range: {score_range}")
 
