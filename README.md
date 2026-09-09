@@ -4,7 +4,7 @@
 
 ![Language](https://img.shields.io/badge/language-Python-blue.svg)
 ![42](https://img.shields.io/badge/42-Python-black.svg)
-![Status](https://img.shields.io/badge/status-In%20Progress-yellow.svg)
+![Status](https://img.shields.io/badge/status-%20Finish-green.svg)
 ![Python](https://img.shields.io/badge/python-3.10%2B-3776AB.svg)
 ![Flake8](https://img.shields.io/badge/flake8-passing-brightgreen.svg)
 ![Mypy](https://img.shields.io/badge/mypy-checked-blue.svg)
